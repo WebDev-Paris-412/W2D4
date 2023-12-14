@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- <form>
+      <button>Search</button>
+		</form> -->
+		<label for="text-search">Search: </label>
+		<input type="search" id="text-search" />
+		<ul></ul>
+	</body>
+
+	<script>
+		let groceries = [
+			{ name: "carrots" },
+			{ name: "artichoke" },
+			{ name: "cauliflower" },
+			{ name: "pizza" },
+		]
+		const list = document.querySelector("ul")
+
+		function createElements(array) {
+			list.innerHTML = ""
+			array.forEach((el) => {
+				const li = document.createElement("li")
+				li.textContent = el.name
+				list.append(li)
+			})
+		}
+		createElements(groceries)
+		// const form = document.querySelector('form')
+		// form.addEventListener('submit', (event) => {
+
+		// })
+		const input = document.querySelector("input")
+		input.addEventListener("input", (event) => {
+			console.log(input.value)
+			let newGroceries = groceries.filter((el) => el.name.includes(input.value))
+			createElements(newGroceries)
+		})
+	</script>
+</html>
